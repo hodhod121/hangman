@@ -159,10 +159,14 @@ namespace FirstProject
                                 }
                                 value_2 = "";
                                 Console.ForegroundColor = ConsoleColor.Magenta;
+                                StringBuilder sb = new StringBuilder();
                                 foreach (char c in TempList_3)
                                 {
-                                    Console.Write($"{c} ");
+                                    sb.Append($"{c} ");
                                 }
+                                Console.WriteLine(sb.ToString());
+                                sb.Clear();
+                                Console.WriteLine(sb);
                                 TempList_3.Clear();
                                 Console.WriteLine();
                                 secret = "";
@@ -248,10 +252,13 @@ namespace FirstProject
                                     Console.WriteLine("You have guessed these letters, but they are not match secret word");
                                 }
                                 Console.ForegroundColor = ConsoleColor.Magenta;
+                                StringBuilder sb = new StringBuilder();
                                 foreach (char c in TempList_3)
                                 {
-                                    Console.Write($"{c} ");
+                                    sb.Append($"{c} ");
                                 }
+                                Console.WriteLine(sb.ToString());
+                                sb.Clear();
                                 foreach (string c in TempList_4)
                                 {
                                     Console.Write($"{c} ");
