@@ -93,8 +93,7 @@ namespace FirstProject
                         if (value_2 == unrevealed)
                         {
                             Console.WriteLine("Congratulations! You have revealed the secret");
-                            Console.WriteLine($"The secret is  {unrevealed}");
-                            live = 0;                           
+                            Console.WriteLine($"The secret is  {unrevealed}");                                                    
                             TempList_1.Clear();
                             TempList_2.Clear();
                             TempList_3.Clear();
@@ -112,9 +111,10 @@ namespace FirstProject
                         }
                         else
                         {
-                            if (live == 10)
+                            if (live == 9)
                             {
                                 Console.WriteLine("Sorry, you cound not find the secret.");
+                                break;
                             }
                             else
                             {
@@ -213,8 +213,7 @@ namespace FirstProject
                             for (int i = 0; i < 10; i++)
                             {
                                 TempList_2.Add('_');
-                            }
-                            live = 0;
+                            }                           
                             break;
                         }
                         else
@@ -262,6 +261,7 @@ namespace FirstProject
                             }
                         }
                     }
+                    //
                 }
                 Console.WriteLine();
                 secret = "";
@@ -273,6 +273,7 @@ namespace FirstProject
                 if (response == "Y" || response == "YES")
                 {
                     TryAgain = true;
+                    live = 0;
                 }
                 else
                 {
