@@ -23,7 +23,7 @@ namespace FirstProject
             Console.Clear();
             Console.WriteLine("Choose an option:");
             Console.WriteLine(" 0) Exit");
-            Console.WriteLine(" 1) Variables");      
+            Console.WriteLine(" 1) Hangman Game");      
             Console.Write("\r\nSelect an option: ");
 
             switch (Console.ReadLine())
