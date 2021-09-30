@@ -50,17 +50,27 @@ namespace FirstProject
             string response_2;
             string unrevealed = Names[rand.Next(0, 9)];
             char output;
-            List<char> TempList_1 = new List<char>();
-            List<char> TempList_2 = new List<char>();
+            char[] CharArr_1=new char[10];
+            char[] CharArr_2=new char[10];          
+            //List<char> TempList_1 = new List<char>();
+            //List<char> TempList_2 = new List<char>();
             List<char> TempList_3 = new List<char>();
             List<string> TempList_4 = new List<string>();
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    TempList_1.Add(unrevealed[i]);
+            //}
             for (int i = 0; i < 10; i++)
             {
-                TempList_1.Add(unrevealed[i]);
+                CharArr_1[i] = unrevealed[i];
             }
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    TempList_2.Add('_');
+            //}
             for (int i = 0; i < 10; i++)
             {
-                TempList_2.Add('_');
+                CharArr_2[i] = '_';
             }
             string response;
             int live = 0;
@@ -94,18 +104,26 @@ namespace FirstProject
                         {
                             Console.WriteLine("Congratulations! You have revealed the secret");
                             Console.WriteLine($"The secret is  {unrevealed}");                                                    
-                            TempList_1.Clear();
-                            TempList_2.Clear();
+                            //TempList_1.Clear();                           
+                            //TempList_2.Clear();
                             TempList_3.Clear();
                             TempList_4.Clear();                           
                             unrevealed = Names[rand.Next(0, 9)];
+                            //for (int i = 0; i < 10; i++)
+                            //{
+                            //    TempList_1.Add(unrevealed[i]);
+                            //}
                             for (int i = 0; i < 10; i++)
                             {
-                                TempList_1.Add(unrevealed[i]);
+                                CharArr_1[i] = unrevealed[i];
                             }
+                            //for (int i = 0; i < 10; i++)
+                            //{
+                            //    TempList_2.Add('_');
+                            //}
                             for (int i = 0; i < 10; i++)
                             {
-                                TempList_2.Add('_');
+                                CharArr_2[i] = unrevealed[i];
                             }
                             break;
                         }
@@ -172,7 +190,6 @@ namespace FirstProject
                                 secret = "";
                             }
                         }
-
                     }
                     else if (response_2 == "L" || response_2 == "LETTER")
                     {
@@ -184,19 +201,35 @@ namespace FirstProject
                             Console.WriteLine("Enter just a letter");
                             val = Console.ReadLine();
                         }
-                        if (!TempList_2.Contains(output) && !repeated.Contains(output) && !unrevealed.Contains(output))
+                        //if (!TempList_2.Contains(output) && !repeated.Contains(output) && !unrevealed.Contains(output))
+                        //{
+                        //    live++;
+                        //    repeated += output.ToString();
+                        //}
+                        //for (int i = 0; i < 10; i++)
+                        //{
+                        //    if (TempList_1[i] == output)
+                        //    {
+                        //        TempList_2[i] = output;
+                        //    }
+                        //}
+                        //foreach (char c in TempList_2)
+                        //{
+                        //    secret += c.ToString();
+                        //}
+                        if (!CharArr_1.Contains(output) && !repeated.Contains(output) && !unrevealed.Contains(output))
                         {
                             live++;
                             repeated += output.ToString();
                         }
                         for (int i = 0; i < 10; i++)
                         {
-                            if (TempList_1[i] == output)
+                            if (CharArr_1[i] == output)
                             {
-                                TempList_2[i] = output;
+                                CharArr_2[i] = output;
                             }
                         }
-                        foreach (char c in TempList_2)
+                        foreach (char c in CharArr_2)
                         {
                             secret += c.ToString();
                         }
@@ -205,19 +238,27 @@ namespace FirstProject
                         {
                             Console.WriteLine("Congratulations! You have revealed the secret");
                             Console.WriteLine($"The secret is  {unrevealed}");
-                            TempList_1.Clear();
-                            TempList_2.Clear();
+                            //TempList_1.Clear();
+                            //TempList_2.Clear();
                             TempList_3.Clear();
                             TempList_4.Clear();
                             unrevealed = Names[rand.Next(0, 9)];
+                            //for (int i = 0; i < 10; i++)
+                            //{
+                            //    TempList_1.Add(unrevealed[i]);
+                            //}
+                            //for (int i = 0; i < 10; i++)
+                            //{
+                            //    TempList_2.Add('_');
+                            //}
                             for (int i = 0; i < 10; i++)
                             {
-                                TempList_1.Add(unrevealed[i]);
+                                CharArr_1[i]=unrevealed[i];
                             }
                             for (int i = 0; i < 10; i++)
                             {
-                                TempList_2.Add('_');
-                            }                           
+                                CharArr_2[i] = '_';
+                            }
                             break;
                         }
                         else
@@ -268,7 +309,6 @@ namespace FirstProject
                             }
                         }
                     }
-                    //
                 }
                 Console.WriteLine();
                 secret = "";
