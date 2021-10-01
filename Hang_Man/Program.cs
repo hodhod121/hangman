@@ -12,11 +12,13 @@ namespace FirstProject
     {
         static void Main(string[] args)
         {
+        
             bool showMenu = true;
             while (showMenu)
             {
                 showMenu = MainMenu();
             }
+
         }
         private static bool MainMenu()
         {
@@ -38,9 +40,14 @@ namespace FirstProject
                     return true;
             }
         }
+        private static void doCustomCode(Action action)
+        {
+            action();  
+        }
+
         private static string RunExerciseOne()
         {
-            Console.Clear();
+            Console.Clear();             
 
             string[] Names = new string[10] {"maximilian","alessandro","kristopher","abdirahman","montgomery","chancellor","jeancarlos","christiano","wellington","princeston"};
             Random rand = new Random();
@@ -51,23 +58,13 @@ namespace FirstProject
             string unrevealed = Names[rand.Next(0, 9)];
             char output;
             char[] CharArr_1=new char[10];
-            char[] CharArr_2=new char[10];          
-            //List<char> TempList_1 = new List<char>();
-            //List<char> TempList_2 = new List<char>();
+            char[] CharArr_2=new char[10];                    
             List<char> TempList_3 = new List<char>();
-            List<string> TempList_4 = new List<string>();
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    TempList_1.Add(unrevealed[i]);
-            //}
+            List<string> TempList_4 = new List<string>();         
             for (int i = 0; i < 10; i++)
             {
                 CharArr_1[i] = unrevealed[i];
-            }
-            //for (int i = 0; i < 10; i++)
-            //{
-            //    TempList_2.Add('_');
-            //}
+            }         
             for (int i = 0; i < 10; i++)
             {
                 CharArr_2[i] = '_';
@@ -101,30 +98,8 @@ namespace FirstProject
                             value_2 = Console.ReadLine();
                         }
                         if (value_2 == unrevealed)
-                        {
-                            Console.WriteLine("Congratulations! You have revealed the secret");
-                            Console.WriteLine($"The secret is  {unrevealed}");                                                    
-                            //TempList_1.Clear();                           
-                            //TempList_2.Clear();
-                            TempList_3.Clear();
-                            TempList_4.Clear();                           
-                            unrevealed = Names[rand.Next(0, 9)];
-                            //for (int i = 0; i < 10; i++)
-                            //{
-                            //    TempList_1.Add(unrevealed[i]);
-                            //}
-                            for (int i = 0; i < 10; i++)
-                            {
-                                CharArr_1[i] = unrevealed[i];
-                            }
-                            //for (int i = 0; i < 10; i++)
-                            //{
-                            //    TempList_2.Add('_');
-                            //}
-                            for (int i = 0; i < 10; i++)
-                            {
-                                CharArr_2[i] = unrevealed[i];
-                            }
+                        {                       
+                            doCustomCode_1();
                             break;
                         }
                         else
@@ -135,58 +110,14 @@ namespace FirstProject
                                 break;
                             }
                             else
-                            {
-                                Console.WriteLine(secret);
-
-                                foreach (char c in repeated)
-                                {
-                                    TempList_3.Add(c);
-                                }
+                            {                               
                                 if (!TempList_4.Contains(value_2))
                                 {
                                     TempList_4.Add(value_2);
                                     live++;
                                 }
-                                Console.ResetColor();
-                                if (TempList_4.Count() > 0 && TempList_3.Count > 0)
-                                {
-                                    Console.WriteLine("You have guessed these letters and words, but they are not match secret word");
-                                }
-                                else if (TempList_4.Count() == 1)
-                                {
-                                    Console.WriteLine("You have guessed this word, but it is not match secret word");
-
-                                }
-                                else if (TempList_4.Count() > 1)
-                                {
-                                    Console.WriteLine("You have guessed these words, but they are not match secret word");
-
-                                }
-                                else if (TempList_3.Count() == 1)
-                                {
-                                    Console.WriteLine("You have guessed this letter, but it is not match secret word");
-                                }
-                                else if (TempList_3.Count() > 1)
-                                {
-                                    Console.WriteLine("You have guessed these letters, but they are not match secret word");
-                                }
-
-                                foreach (string c in TempList_4)
-                                {
-                                    Console.Write($"{c} ");
-                                }
-                                value_2 = "";
-                                Console.ForegroundColor = ConsoleColor.Magenta;
-                                StringBuilder sb = new StringBuilder();
-                                foreach (char c in TempList_3)
-                                {
-                                    sb.Append($"{c} ");
-                                }
-                                Console.WriteLine(sb.ToString());
-                                sb.Clear();
-                                Console.WriteLine(sb);
-                                TempList_3.Clear();
-                                Console.WriteLine();
+                                doCustomCode_2();                         
+                                value_2 = "";                             
                                 secret = "";
                             }
                         }
@@ -200,23 +131,7 @@ namespace FirstProject
                         {
                             Console.WriteLine("Enter just a letter");
                             val = Console.ReadLine();
-                        }
-                        //if (!TempList_2.Contains(output) && !repeated.Contains(output) && !unrevealed.Contains(output))
-                        //{
-                        //    live++;
-                        //    repeated += output.ToString();
-                        //}
-                        //for (int i = 0; i < 10; i++)
-                        //{
-                        //    if (TempList_1[i] == output)
-                        //    {
-                        //        TempList_2[i] = output;
-                        //    }
-                        //}
-                        //foreach (char c in TempList_2)
-                        //{
-                        //    secret += c.ToString();
-                        //}
+                        }                    
                         if (!CharArr_1.Contains(output) && !repeated.Contains(output) && !unrevealed.Contains(output))
                         {
                             live++;
@@ -235,31 +150,9 @@ namespace FirstProject
                         }
 
                         if (secret == unrevealed)
-                        {
-                            Console.WriteLine("Congratulations! You have revealed the secret");
-                            Console.WriteLine($"The secret is  {unrevealed}");
-                            //TempList_1.Clear();
-                            //TempList_2.Clear();
-                            TempList_3.Clear();
-                            TempList_4.Clear();
-                            unrevealed = Names[rand.Next(0, 9)];
-                            //for (int i = 0; i < 10; i++)
-                            //{
-                            //    TempList_1.Add(unrevealed[i]);
-                            //}
-                            //for (int i = 0; i < 10; i++)
-                            //{
-                            //    TempList_2.Add('_');
-                            //}
-                            for (int i = 0; i < 10; i++)
-                            {
-                                CharArr_1[i]=unrevealed[i];
-                            }
-                            for (int i = 0; i < 10; i++)
-                            {
-                                CharArr_2[i] = '_';
-                            }
-                            break;
+                        {                       
+                            doCustomCode_1();
+                            break;                       
                         }
                         else
                         {
@@ -269,43 +162,7 @@ namespace FirstProject
                             }
                             else
                             {
-                                Console.WriteLine(secret);
-                                foreach (char c in repeated)
-                                {
-                                    TempList_3.Add(c);
-                                }
-                                Console.ResetColor();
-                                if (TempList_4.Count() > 0 && TempList_3.Count > 0)
-                                {
-                                    Console.WriteLine("You have guessed these letters and words, but they are not match secret word");
-                                }
-                                else if (TempList_4.Count() > 0)
-                                {
-                                    Console.WriteLine("You have guessed these words, but they are not match secret word");
-
-                                }
-                                else if (TempList_3.Count() == 1)
-                                {
-                                    Console.WriteLine("You have guessed this letter, but it is not match secret word");
-                                }
-                                else if (TempList_3.Count() > 1)
-                                {
-                                    Console.WriteLine("You have guessed these letters, but they are not match secret word");
-                                }
-                                Console.ForegroundColor = ConsoleColor.Magenta;
-                                StringBuilder sb = new StringBuilder();
-                                foreach (char c in TempList_3)
-                                {
-                                    sb.Append($"{c} ");
-                                }
-                                Console.WriteLine(sb.ToString());
-                                sb.Clear();
-                                foreach (string c in TempList_4)
-                                {
-                                    Console.Write($"{c} ");
-                                }
-                                TempList_3.Clear();
-                                Console.WriteLine();                               
+                                doCustomCode_2();                                                        
                             }
                         }
                     }
@@ -327,8 +184,72 @@ namespace FirstProject
                     TryAgain = false;
                     break;
                 }
+
             }
-            Console.Write("\r\nPress Enter to return to Main Menu");
+            void doCustomCode_1()
+            {
+                Console.Clear();              
+                Console.WriteLine("Congratulations! You have revealed the secret");
+                Console.WriteLine($"The secret is  {unrevealed}");
+                TempList_3.Clear();
+                TempList_4.Clear();
+                unrevealed = Names[rand.Next(0, 9)];
+                for (int i = 0; i < 10; i++)
+                {
+                    CharArr_1[i] = unrevealed[i];
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    CharArr_2[i] = '_';
+                }
+
+            }
+            void doCustomCode_2()
+            {             
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("This is your revealed letters of the secret word");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine(secret);               
+                foreach (char c in repeated)
+                {
+                    TempList_3.Add(c);
+                }
+                Console.ResetColor();
+                if (TempList_4.Count() > 0 && TempList_3.Count > 0)
+                {
+                    Console.WriteLine("You have guessed these letters and words, but they are not match secret word");
+                }
+                else if (TempList_4.Count() > 0)
+                {
+                    Console.WriteLine("You have guessed these words, but they are not match secret word");
+
+                }
+                else if (TempList_3.Count() == 1)
+                {
+                    Console.WriteLine("You have guessed this letter, but it is not match secret word");
+                }
+                else if (TempList_3.Count() > 1)
+                {
+                    Console.WriteLine("You have guessed these letters, but they are not match secret word");
+                }
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                StringBuilder sb = new StringBuilder();
+                foreach (string c in TempList_4)
+                {
+                    Console.Write($"{c} ");
+                }
+                foreach (char c in TempList_3)
+                {
+                    sb.Append($"{c} ");
+                }
+                Console.WriteLine(sb.ToString());
+                sb.Clear();
+                Console.WriteLine(sb);
+                TempList_3.Clear();
+                Console.WriteLine();
+            }
+                Console.Write("\r\nPress Enter to return to Main Menu");
             return Console.ReadLine();
         }      
     }
